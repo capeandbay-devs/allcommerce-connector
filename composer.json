@@ -1,0 +1,35 @@
+{
+  "name": "capeandbay/allcommerce-service-desk",
+  "description": "ServiceDesk - The Official AllCommerce API SDK for Laravel",
+  "type": "library",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Angel Gonzalez",
+      "email": "angel@capeandbay.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "laravel/framework": "5.8.*|^6.0",
+    "ixudra/curl": "^6.17"
+  },
+  "autoload": {
+    "psr-4": {
+      "CapeAndBay\\ServiceDesk\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "branch-alias": {
+        "dev-master": "0.0.1-dev"
+      },
+      "providers": [
+        "CapeAndBay\\AllCommerce\\ServiceDesk\\ServiceDeskServiceProvider"
+      ],
+      "aliases": {
+        "TrapperKeeper": "CapeAndBay\\AllCommerce\\ServiceDesk\\Facades\\ServiceDesk"
+      }
+    }
+  }
+}

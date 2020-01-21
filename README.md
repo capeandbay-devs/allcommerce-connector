@@ -1,1 +1,8 @@
-# allcommerce-connector
+# TrapperKeeper by Cape & Bay
+
+##Dependancies
+
+Requires Ixudra/Curl;
+
+
+#
