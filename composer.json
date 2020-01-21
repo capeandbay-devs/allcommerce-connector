@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "CapeAndBay\\ServiceDesk\\": "src/"
+      "CapeAndBay\\AllCommerce\\": "src/"
     }
   },
   "extra": {
