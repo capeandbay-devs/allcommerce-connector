@@ -25,10 +25,10 @@
         "dev-master": "0.0.1-dev"
       },
       "providers": [
-        "CapeAndBay\\AllCommerce\\ServiceDesk\\ServiceDeskServiceProvider"
+        "CapeAndBay\\AllCommerce\\ServiceDeskServiceProvider"
       ],
       "aliases": {
-        "TrapperKeeper": "CapeAndBay\\AllCommerce\\ServiceDesk\\Facades\\ServiceDesk"
+        "ServiceDesk": "CapeAndBay\\AllCommerce\\Facades\\ServiceDesk"
       }
     }
   }
