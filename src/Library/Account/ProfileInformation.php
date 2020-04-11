@@ -21,7 +21,7 @@ class ProfileInformation extends Feature
 
             if(array_key_exists('user', $profile))
             {
-                $this->user_id = $profile['user']['user_id'];
+                $this->user_id = $profile['user']['uuid'];
                 $this->user_name = $profile['user']['name'];
                 $this->user_email = $profile['user']['email'];
                 $this->user_account_created = $profile['user']['created_at'];
