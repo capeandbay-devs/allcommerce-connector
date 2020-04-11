@@ -25,6 +25,7 @@ class AccessToken extends AllCommerceAPIClientService
             ];
             $response = $this->post($this->api_url().'/me', [], $headers);
         }
+
         return $token;
 
     }
