@@ -67,4 +67,29 @@ class ProfileInformation extends Feature
 
         return $results;
     }
+
+    public function getUserID()
+    {
+        return $this->user_id;
+    }
+
+    public function getUserName()
+    {
+        return $this->user_name;
+    }
+
+    public function getUserEmail()
+    {
+        return $this->user_email;
+    }
+
+    public function getAccountCreatedDate()
+    {
+        return $this->user_account_created;
+    }
+
+    public function getAccountLastUpdated()
+    {
+        return $this->user_last_updated_timestamp;
+    }
 }
