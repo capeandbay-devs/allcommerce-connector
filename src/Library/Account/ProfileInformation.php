@@ -7,10 +7,12 @@ use CapeAndBay\AllCommerce\Library\Feature;
 class ProfileInformation extends Feature
 {
     protected $url = '/me';
+    protected $profile;
 
     public function __construct()
     {
         parent::__construct();
+        $this->profile = $this->getProfile();
     }
 
     public function my_url()
@@ -18,7 +20,7 @@ class ProfileInformation extends Feature
         return $this->allcommerce_client->api_url().$this->url;
     }
 
-    public function getProfile()
+    private function getProfile()
     {
         $results = [];
 
@@ -28,7 +30,7 @@ class ProfileInformation extends Feature
                 'Accept: vnd.allcommerce.v1+json',
                 'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token')
             ];
-            $response = $this->allcommerce_client->get($this->my_url(), $headers);
+            $response = $this->allcommerce_client->post($this->my_url(), [], $headers);
 
             if($response)
             {

@@ -25,7 +25,7 @@ class ServiceDeskFactory
     }
 
     /**
-     * Create an instance of TrapperKeeper.
+     * Create an instance of ServiceDesk.
      *
      * @return ServiceDesk
      */
