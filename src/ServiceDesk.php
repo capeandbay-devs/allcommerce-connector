@@ -35,7 +35,7 @@ class ServiceDesk
      */
     public static function make($token = null)
     {
-        return new ServiceDeskFactory($token);
+        return new ServiceDeskFactory($token, new LibraryService());
     }
 
     /**

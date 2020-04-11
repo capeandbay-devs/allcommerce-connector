@@ -3,6 +3,7 @@
 namespace CapeAndBay\AllCommerce;
 
 use CapeAndBay\AllCommerce\Auth\AccessToken;
+use CapeAndBay\AllCommerce\Services\LibraryService;
 
 class ServiceDeskFactory
 {
@@ -31,7 +32,7 @@ class ServiceDeskFactory
     public function create()
     {
         $access_token = $this->getAccessToken();
-        $keeper = new ServiceDesk($access_token);
+        $keeper = new ServiceDesk($access_token, new LibraryService());
 
         return $keeper;
     }
