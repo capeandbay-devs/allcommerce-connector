@@ -3,6 +3,7 @@
 namespace CapeAndBay\AllCommerce;
 
 use Illuminate\Support\ServiceProvider;
+use CapeAndBay\AllCommerce\Services\LibraryService;
 
 class ServiceDeskServiceProvider extends ServiceProvider
 {
@@ -53,7 +54,7 @@ class ServiceDeskServiceProvider extends ServiceProvider
             {
                 $token = session()->get('allcommerce-jwt-access-token');
             }
-            return ServiceDesk::make($token)
+            return ServiceDesk::make($token, new LibraryService())
                 ->create();
         });
     }
