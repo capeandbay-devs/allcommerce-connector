@@ -32,12 +32,12 @@ class AllCommerceAPIClientService
 
         if($response)
         {
-            Log::info('LeadBinder Response from '.$url, $response);
+            Log::info('AllCommerce Response from '.$url, $response);
             $results = $response;
         }
         else
         {
-            Log::info('LeadBinder Null Response from '.$url);
+            Log::info('AllCommerce Null Response from '.$url);
         }
 
         return $results;

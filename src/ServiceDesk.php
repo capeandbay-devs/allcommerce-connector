@@ -4,18 +4,20 @@ namespace CapeAndBay\AllCommerce;
 
 use CapeAndBay\AllCommerce\Auth\AccessToken;
 use CapeAndBay\AllCommerce\ServiceDeskFactory;
+use CapeAndBay\AllCommerce\Services\LibraryService;
 
 class ServiceDesk
 {
-    protected $access_token;
+    protected $access_token, $library;
 
-    public function __construct(AccessToken $access_token)
+    public function __construct(AccessToken $access_token, LibraryService $lib)
     {
         $this->access_token = $access_token;
+        $this->library = $lib;
     }
 
     /**
-     * Create a new TrapperKeeper instance.
+     * Create a new ServiceDesk instance.
      *
      * @param mixed $token
      * @return static
@@ -26,7 +28,7 @@ class ServiceDesk
     }
 
     /**
-     * Create a TrapperKeeper factory instance.
+     * Create a ServiceDesk factory instance.
      *
      * @param  mixed  $token
      * @return ServiceDeskFactory
@@ -37,11 +39,11 @@ class ServiceDesk
     }
 
     /**
-     * Login to the LeadBinder service via JWT.
+     * Login to the ServiceDesk service via JWT.
      *
      * @param  string  $username
      * @param  string  $password
-     * @return TrapperKeeper
+     * @return ServiceDesk|bool
      */
     public function login($username, $password)
     {
@@ -66,6 +68,20 @@ class ServiceDesk
             {
                 $results = $login_response;
             }
+        }
+
+        return $results;
+    }
+
+    public function get($feature = '')
+    {
+        $results = false;
+
+        $asset = $this->library->retrieve($feature);
+
+        if($asset)
+        {
+            $results = $asset;
         }
 
         return $results;
