@@ -26,7 +26,7 @@ class MerchantInventory extends Feature
         }
         else
         {
-            $this->inventory = false;
+            $this->inventory = [];
         }
     }
 
@@ -55,6 +55,27 @@ class MerchantInventory extends Feature
         catch(\Exception $e)
         {
             $results = $e->getMessage();
+        }
+
+        return $results;
+    }
+
+    public function getItemsArray()
+    {
+        return $this->inventory;
+    }
+
+    public function getItemArray($query = [])
+    {
+        $results = [];
+
+        $data = collect($this->inventory);
+
+        if(!empty($query))
+        {
+            foreach ($query as $key => $item) {
+                $results = $data->where($key, $item[0], $item[1]);
+            }
         }
 
         return $results;
