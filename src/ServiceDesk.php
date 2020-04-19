@@ -2,6 +2,7 @@
 
 namespace CapeAndBay\AllCommerce;
 
+use Illuminate\Support\Facades\Log;
 use CapeAndBay\AllCommerce\Auth\AccessToken;
 use CapeAndBay\AllCommerce\ServiceDeskFactory;
 use CapeAndBay\AllCommerce\Services\LibraryService;
@@ -77,11 +78,18 @@ class ServiceDesk
     {
         $results = false;
 
-        $asset = $this->library->retrieve($feature);
-
-        if($asset)
+        try
         {
-            $results = $asset;
+            $asset = $this->library->retrieve($feature);
+
+            if($asset)
+            {
+                $results = $asset;
+            }
+        }
+        catch(\Exception $e)
+        {
+            Log::info('AllCommerce Feature - '.$feature.' not found.');
         }
 
         return $results;

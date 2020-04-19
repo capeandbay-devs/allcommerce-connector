@@ -20,15 +20,28 @@ class AllCommerceAPIClientService
         return $this->root_url.$this->api_url;
     }
 
-    public function get($endpoint)
+    public function get($endpoint, $headers = [])
     {
         $results = false;
 
         $url = $endpoint;
-        $response = Curl::to($url)
-            ->withHeader('Accept: vnd.allcommerce.v1+json')
-            ->asJson(true)
-            ->get();
+
+        if(!empty($headers))
+        {
+            $response = Curl::to($url)
+                ->withHeaders($headers)
+                ->asJson(true)
+                ->get();
+        }
+        else
+        {
+            $response = Curl::to($url)
+                ->withHeader('Accept: vnd.allcommerce.v1+json')
+                ->asJson(true)
+                ->get();
+        }
+
+
 
         if($response)
         {
