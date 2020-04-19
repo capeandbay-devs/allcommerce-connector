@@ -78,6 +78,6 @@ class MerchantInventory extends Feature
             }
         }
 
-        return $results;
+        return $results->toArray();
     }
 }
