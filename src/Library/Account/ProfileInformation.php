@@ -9,6 +9,7 @@ class ProfileInformation extends Feature
     protected $url = '/me';
     protected $user_id, $user_name, $user_email;
     protected $user_account_created, $user_last_updated_timestamp;
+    protected $user_roles;
 
     public function __construct()
     {
@@ -26,6 +27,7 @@ class ProfileInformation extends Feature
                 $this->user_email = $profile['user']['email'];
                 $this->user_account_created = $profile['user']['created_at'];
                 $this->user_last_updated_timestamp = $profile['user']['updated_at'];
+                $this->user_roles = $profile['roles'];
             }
             else
             {
@@ -91,5 +93,10 @@ class ProfileInformation extends Feature
     public function getAccountLastUpdated()
     {
         return $this->user_last_updated_timestamp;
+    }
+
+    public function getUserRoles()
+    {
+        return $this->user_roles;
     }
 }
