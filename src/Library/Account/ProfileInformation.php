@@ -10,6 +10,7 @@ class ProfileInformation extends Feature
     protected $user_id, $user_name, $user_email;
     protected $user_account_created, $user_last_updated_timestamp;
     protected $user_roles, $merchants;
+    protected $internal_user = false;
 
     public function __construct()
     {
@@ -29,6 +30,11 @@ class ProfileInformation extends Feature
                 $this->user_last_updated_timestamp = $profile['user']['updated_at'];
                 $this->user_roles = $profile['roles'];
                 $this->merchants = $profile['merchants'];
+
+                if(array_key_exists('is_allcommerce', $profile))
+                {
+                    $this->internal_user = $profile['is_allcommerce'];
+                }
             }
             else
             {
@@ -115,5 +121,10 @@ class ProfileInformation extends Feature
     public function getMerchantList()
     {
         // @todo - coming soon!
+    }
+
+    public function isInternalUser()
+    {
+        return $this->internal_user;
     }
 }
