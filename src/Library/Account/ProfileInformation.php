@@ -11,6 +11,7 @@ class ProfileInformation extends Feature
     protected $user_account_created, $user_last_updated_timestamp;
     protected $user_roles, $merchants;
     protected $internal_user = false;
+    protected $internal_uuid = null;
 
     public function __construct()
     {
@@ -34,6 +35,7 @@ class ProfileInformation extends Feature
                 if(array_key_exists('is_allcommerce', $profile))
                 {
                     $this->internal_user = $profile['is_allcommerce'];
+                    $this->internal_uuid = $profile['capeandbay_uuid'];
                 }
             }
             else
@@ -126,5 +128,10 @@ class ProfileInformation extends Feature
     public function isInternalUser()
     {
         return $this->internal_user;
+    }
+
+    public function internal_uuid()
+    {
+        return $this->internal_uuid;
     }
 }
