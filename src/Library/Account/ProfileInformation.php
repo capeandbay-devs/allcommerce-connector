@@ -9,7 +9,7 @@ class ProfileInformation extends Feature
     protected $url = '/me';
     protected $user_id, $user_name, $user_email;
     protected $user_account_created, $user_last_updated_timestamp;
-    protected $user_roles;
+    protected $user_roles, $merchants;
 
     public function __construct()
     {
@@ -28,6 +28,7 @@ class ProfileInformation extends Feature
                 $this->user_account_created = $profile['user']['created_at'];
                 $this->user_last_updated_timestamp = $profile['user']['updated_at'];
                 $this->user_roles = $profile['roles'];
+                $this->merchants = $profile['merchants'];
             }
             else
             {
@@ -98,5 +99,21 @@ class ProfileInformation extends Feature
     public function getUserRoles()
     {
         return $this->user_roles;
+    }
+
+    /**
+     * Returns the local array of merchants
+     */
+    public function getMerchantArray()
+    {
+        return $this->merchants;
+    }
+
+    /**
+     * Returns list of Merchant Objects
+     */
+    public function getMerchantList()
+    {
+        // @todo - coming soon!
     }
 }
