@@ -15,12 +15,12 @@ class MerchantInventory extends Feature
 
         $inventory = $this->getInventory();
 
-        if(array_key_exists('inventory', $inventory))
+        if(is_array($inventory) && count($inventory) > 0)
         {
-            $this->inventory = $inventory['inventory'];
+            $this->inventory = $inventory;
 
             // @todo - this will need to be placed into an object via a function;
-            $this->merchant = $inventory['merchant'];
+            //$this->merchant = $inventory['merchant'];
 
             // @todo - do stuff after these messages.
         }
