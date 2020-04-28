@@ -48,7 +48,7 @@ class MerchantInventory extends Feature
 
             if(session()->has('active-merchant-uuid'))
             {
-                $headers[] = 'merchant_uuid: '.session()->get('active-merchant-uuid');
+                $headers[] = 'merchant-uuid: '.session()->get('active-merchant-uuid');
             }
 
             $response = $this->allcommerce_client->get($this->inventory_url(), $headers);
