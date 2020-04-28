@@ -45,6 +45,12 @@ class MerchantInventory extends Feature
                 'Accept: vnd.allcommerce.v1+json',
                 'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token')
             ];
+
+            if(session()->has('active-merchant-uuid'))
+            {
+                $headers['merchant_uuid'] = session()->get('active-merchant-uuid');
+            }
+
             $response = $this->allcommerce_client->get($this->inventory_url(), $headers);
 
             if($response)
