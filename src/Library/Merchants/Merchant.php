@@ -6,7 +6,7 @@ use CapeAndBay\AllCommerce\Library\Feature;
 
 class Merchant extends Feature
 {
-    protected $url = '/merchants';
+    protected $url = '/merchant';
     protected $access_token;
     protected $details;
 
