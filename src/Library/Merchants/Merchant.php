@@ -47,7 +47,7 @@ class Merchant extends Feature
                 'Accept: vnd.allcommerce.v1+json',
                 'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token')
             ];
-            $response = $this->allcommerce_client->get($this->merchant_url(), [], $headers);
+            $response = $this->allcommerce_client->get($this->merchant_url(), $headers);
 
             if($response)
             {
