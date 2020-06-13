@@ -94,4 +94,9 @@ class ServiceDesk
 
         return $results;
     }
+
+    public function getAccessToken()
+    {
+        return $this->access_token->token();
+    }
 }
