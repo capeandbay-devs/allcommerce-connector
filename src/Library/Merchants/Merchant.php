@@ -73,4 +73,30 @@ class Merchant extends Feature
         return $results;
     }
 
+    public function assignMerchantToShopifyShop($shop_id)
+    {
+        $results = false;
+
+        $headers = [
+            'Accept: vnd.allcommerce.v1+json',
+            'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token'),
+        ];
+
+        $payload = [
+            'shop' => $shop_id
+        ];
+
+        $response = $this->allcommerce_client->post($this->shopify_merchant_url().'/assign', $payload, $headers);
+
+        if($response)
+        {
+            if(array_key_exists('success', $response))
+            {
+                $results = $response;
+            }
+        }
+
+        return $results;
+    }
+
 }
