@@ -26,7 +26,7 @@ class Merchant extends Feature
         return $this->allcommerce_client->api_url().'/shopify'.$this->url;
     }
 
-    public function init()
+    private function init()
     {
         if($results = $this->getMerchant())
         {
@@ -44,18 +44,25 @@ class Merchant extends Feature
 
         try
         {
-            $headers = [
-                'Accept: vnd.allcommerce.v1+json',
-                'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token')
-            ];
-            $response = $this->allcommerce_client->get($this->merchant_url(), $headers);
-
-            if($response)
+            if(!is_array($this->details))
             {
-                if(array_key_exists('success', $response) && $response['success'])
+                $headers = [
+                    'Accept: vnd.allcommerce.v1+json',
+                    'Authorization: Bearer '.session()->get('allcommerce-jwt-access-token')
+                ];
+                $response = $this->allcommerce_client->get($this->merchant_url(), $headers);
+
+                if($response)
                 {
-                    $results = $response['merchant'];
+                    if(array_key_exists('success', $response) && $response['success'])
+                    {
+                        $results = $response['merchant'];
+                    }
                 }
+            }
+            else
+            {
+                $results = $this->details;
             }
         }
         catch(\Exception $e)
