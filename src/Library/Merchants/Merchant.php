@@ -13,6 +13,7 @@ class Merchant extends Feature
     public function __construct($presets = [])
     {
         parent::__construct();
+        $this->init();
     }
 
     public function merchant_url()
