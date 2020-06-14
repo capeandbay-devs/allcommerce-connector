@@ -9,9 +9,10 @@ class ProfileInformation extends Feature
     protected $url = '/me';
     protected $user_id, $user_name, $user_email;
     protected $user_account_created, $user_last_updated_timestamp;
-    protected $user_roles, $merchants;
+    protected $merchants;
     protected $internal_user = false;
     protected $internal_uuid = null;
+    protected $user_roles = [];
 
     public function __construct()
     {

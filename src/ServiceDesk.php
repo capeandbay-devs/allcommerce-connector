@@ -74,6 +74,46 @@ class ServiceDesk
         return $results;
     }
 
+    /**
+     * Login to the ServiceDesk service via a Sales Channel Integration such as
+     * Shopify.
+     * (currently supported: 'shopify')
+     * @param  string  $platform
+     * @param  array  $login_payload
+     * @return ServiceDesk|bool
+     */
+    public function sso($platform, array $login_payload)
+    {
+        $results = false;
+
+        switch($platform)
+        {
+            case 'shopify':
+                if($login_response = $this->access_token->login_via_sso($login_payload))
+                {
+                    if($login_response === true)
+                    {
+                        session()->put('allcommerce-jwt-access-token', $this->access_token->token());
+                        session()->put('allcommerce-username', $this->access_token->username());
+                        $results = $this;
+                    }
+                    else
+                    {
+                        if($login_response)
+                        {
+                            $results = $login_response;
+                        }
+                    }
+                }
+                break;
+
+            default:
+                $results = false;
+        }
+
+        return $results;
+    }
+
     public function get($feature = '')
     {
         $results = false;
