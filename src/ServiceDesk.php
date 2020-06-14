@@ -89,7 +89,7 @@ class ServiceDesk
         switch($platform)
         {
             case 'shopify':
-                if($login_response = $this->access_token->login_via_sso($login_payload))
+                if($login_response = $this->access_token->login_via_sso($platform, $login_payload))
                 {
                     if($login_response === true)
                     {
