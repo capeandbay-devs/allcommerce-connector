@@ -9,7 +9,7 @@ class ProfileInformation extends Feature
     protected $url = '/me';
     protected $user_id, $user_name, $user_email;
     protected $user_account_created, $user_last_updated_timestamp;
-    protected $merchants;
+    protected $merchants, $shops;
     protected $internal_user = false;
     protected $internal_uuid = null;
     protected $user_roles = [];
@@ -25,13 +25,16 @@ class ProfileInformation extends Feature
 
             if(array_key_exists('user', $profile))
             {
-                $this->user_id = $profile['user']['uuid'];
-                $this->user_name = $profile['user']['name'];
+                $this->user_id = $profile['user']['id'];
+                $this->user_name = $profile['user']['username'];
+                $this->first_name = $profile['user']['first_name'];
+                $this->last_name = $profile['user']['last_name'];
                 $this->user_email = $profile['user']['email'];
                 $this->user_account_created = $profile['user']['created_at'];
                 $this->user_last_updated_timestamp = $profile['user']['updated_at'];
                 $this->user_roles = $profile['roles'];
                 $this->merchants = $profile['merchants'];
+                $this->shops = $profile['shops'];
 
                 if(array_key_exists('is_allcommerce', $profile))
                 {
