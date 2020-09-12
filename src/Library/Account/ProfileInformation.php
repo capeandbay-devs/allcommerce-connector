@@ -138,4 +138,23 @@ class ProfileInformation extends Feature
     {
         return $this->internal_uuid;
     }
+
+    public function getShops()
+    {
+        return $this->shops;
+    }
+
+    public function getShop($url)
+    {
+        $results = false;
+
+        $shop = collect($this->shops)->where('shop_url', '=', $url)->first();
+
+        if(!is_null($shop))
+        {
+            $results = $shop;
+        }
+
+        return $results;
+    }
 }
